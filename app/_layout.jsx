@@ -16,21 +16,15 @@ export default function RootLayout() {
     "Jakarta-Regular": require("../assets/fonts/PlusJakartaSans-Regular.ttf"),
     "Jakarta-SemiBold": require("../assets/fonts/PlusJakartaSans-SemiBold.ttf"),
   });
-
   useEffect(() => {
-    const hideSplash = async () => {
-      if (loaded) {
-        await SplashScreen.hideAsync();
-      }
-    };
-    hideSplash();
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
   }, [loaded]);
 
   if (!loaded) {
-    console.log("Fonts are still loading...");
     return null;
   }
-
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
